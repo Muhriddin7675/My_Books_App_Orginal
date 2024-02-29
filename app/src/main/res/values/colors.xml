@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Color_Azure">#f0ffff</color>
+    <color name="Color_DarkSlateGray">#2f4f4f</color>
+    <color name="Color_AliceBlue">#f0f8ff</color>
+    <color name="text_color">#2196F3</color>
+    <color name="Color_Black">#000000</color>
+    <color name="Color_Button">#06EDD8</color>
+    <color name="gray_500">#64748b</color>
+
+
+
 </resources>

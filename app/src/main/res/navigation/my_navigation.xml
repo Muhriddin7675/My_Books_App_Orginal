@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_navigation"
+    app:startDestination="@id/splashScreen">
+
+    <fragment
+        android:id="@+id/splashScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.SplashScreen"
+        android:label="SplashScreen"
+        tools:layout="@layout/screen_splash">
+        <action
+            android:id="@+id/action_splashScreen_to_introScreen"
+            app:destination="@id/introScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashScreen_to_menuScreen"
+            app:destination="@id/menuScreen"
+            app:popUpTo="@id/splashScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/introScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.IntroScreen"
+        android:label="IntroScreen"
+        tools:layout="@layout/screen_intro">
+        <action
+            android:id="@+id/action_introScreen_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/introScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.LoginScreen"
+        android:label="LoginScreen"
+        tools:layout="@layout/screen_login">
+        <action
+            android:id="@+id/action_loginScreen_to_registerScreen"
+            app:destination="@id/registerScreen" />
+        <action
+            android:id="@+id/action_loginScreen_to_menuScreen"
+            app:destination="@id/menuScreen"
+            app:popUpTo="@id/loginScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.RegisterScreen"
+        android:label="RegisterScreen"
+        tools:layout="@layout/screen_register">
+        <action
+            android:id="@+id/action_registerScreen_to_menuScreen"
+            app:destination="@id/menuScreen"
+            app:popUpTo="@id/registerScreen"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/menuScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.MenuScreen"
+        android:label="MenuScreen"
+        tools:layout="@layout/menu_screen">
+        <action
+            android:id="@+id/action_menuScreen_to_byCategoryAllBooksScreen"
+            app:destination="@id/byCategoryAllBooksScreen" />
+        <action
+            android:id="@+id/action_menuScreen_to_bookInfo"
+            app:destination="@id/bookInfo" />
+    </fragment>
+    <fragment
+        android:id="@+id/byCategoryAllBooksScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.ByCategoryAllBooksScreen"
+        android:label="ByCategoryAllBooksScreen"
+        tools:layout="@layout/screen_category_by_books_all">
+        <action
+            android:id="@+id/action_byCategoryAllBooksScreen_to_bookInfo"
+            app:destination="@id/bookInfo" />
+        <argument
+            android:name="categoryData"
+            app:argType="com.example.mybooksapporginal.data.CategoryData" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookInfo"
+        android:name="com.example.mybooksapporginal.presentantion.screen.BookInfo"
+        android:label="BookInfo"
+        tools:layout="@layout/screen_info_book">
+        <argument
+            android:name="bookData"
+            app:argType="com.example.mybooksapporginal.data.BookData" />
+    </fragment>
+</navigation>

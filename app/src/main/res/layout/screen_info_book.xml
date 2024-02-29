@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="?android:selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </ImageView>
+
+            <ImageView
+                android:id="@+id/book_image"
+                android:layout_width="240dp"
+                android:layout_height="272dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_image"
+                android:padding="4dp"
+                android:src="@drawable/book_image"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/back" />
+
+
+            <TextView
+                android:id="@+id/book_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="56dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_extrabold"
+                android:gravity="center"
+                android:text="Zafar Hoshimov dhfghdsgbhfgbdshgfshhfghsgdhfghsdfh"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/book_image" />
+
+            <TextView
+                android:id="@+id/book_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Abdulla Avloniy"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/book_name" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_down"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_btn"
+                android:text="Download"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintHorizontal_bias="0.78"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/book_author"
+                tools:ignore="HardcodedText">
+            </androidx.appcompat.widget.AppCompatButton>
+
+            <androidx.constraintlayout.widget.Placeholder
+                android:id="@+id/download"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintHorizontal_bias="0.78"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/book_author"
+                tools:ignore="HardcodedText">
+            </androidx.constraintlayout.widget.Placeholder>
+
+
+
+            <TextView
+                android:id="@+id/book"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="center"
+                android:text="Kitob Haqida"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/download" />
+
+
+            <TextView
+                android:id="@+id/book_description"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/nunito_bold"
+                android:gravity="start"
+                android:paddingBottom="24dp"
+                android:text="Kitob Haqida"
+                android:textColor="@color/gray_500"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/book" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/bottomBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="76dp"-->
+<!--        android:elevation="2dp"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ic_download"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:layout_marginTop="16dp"-->
+<!--                android:src="@drawable/download_svgrepo_com"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/progress"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="24dp"-->
+<!--                android:fontFamily="@font/nunito_extrabold"-->
+<!--                android:text="714/778 MB"-->
+<!--                android:textSize="18sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/ic_download"-->
+<!--                app:layout_constraintStart_toEndOf="@id/ic_download"-->
+<!--                app:layout_constraintTop_toTopOf="@id/ic_download" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/play_button"-->
+<!--                android:layout_width="42dp"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:visibility="visible"-->
+<!--                android:background="?selectableItemBackgroundBorderless"-->
+<!--                android:padding="9dp"-->
+<!--                android:src="@drawable/play_svgrepo_com"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/ic_download"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/cancel_button"-->
+<!--                app:layout_constraintTop_toTopOf="@id/ic_download" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/pause_button"-->
+<!--                android:layout_width="42dp"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:visibility="gone"-->
+<!--                android:background="?selectableItemBackgroundBorderless"-->
+<!--                android:padding="9dp"-->
+<!--                android:src="@drawable/pause_svgrepo_com"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/ic_download"-->
+<!--                app:layout_constraintEnd_toStartOf="@id/cancel_button"-->
+<!--                app:layout_constraintTop_toTopOf="@id/ic_download" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/cancel_button"-->
+<!--                android:layout_width="42dp"-->
+<!--                android:layout_height="42dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:background="?selectableItemBackgroundBorderless"-->
+<!--                android:padding="9dp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@id/ic_download"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@id/ic_download" />-->
+
+<!--            <SeekBar-->
+<!--                android:id="@+id/seekbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginHorizontal="4dp"-->
+<!--                app:chainUseRtl="false"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent" />-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
