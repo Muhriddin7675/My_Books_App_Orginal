@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:fontFamily="@font/nunito_semi_bold"
+        android:fontFamily="@font/nunito_bold"
         android:text="@string/kutubxona"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -33,23 +33,14 @@
         app:layout_constraintTop_toBottomOf="@id/status_bar_view"
         tools:listitem="@layout/item_category_books" />
 
-    <FrameLayout
-        android:id="@+id/frameProgress"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:background="#fff"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/rv_category_books"
-        app:layout_constraintTop_toTopOf="@id/rv_category_books">
-    </FrameLayout>
-
-    <androidx.core.widget.ContentLoadingProgressBar
+    <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="56dp"
         android:layout_height="56dp"
-        style="?android:attr/progressBarStyleLarge"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:elevation="2dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

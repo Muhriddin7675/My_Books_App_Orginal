@@ -21,20 +21,17 @@ import kotlinx.coroutines.launch
 class SplashScreen : Fragment(R.layout.screen_splash) {
 
     private val viewModel: SplashScreenViewModel by viewModels<SplashScreenViewModelImpl>()
+    private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewModel.load()
 
         viewModel.openIntroScreen
-            .onEach { findNavController().navigate(SplashScreenDirections.actionSplashScreenToIntroScreen()) }
-            .launchIn(lifecycleScope)
-
-        viewModel.openLoginScreen
-            .onEach { findNavController().navigate(SplashScreenDirections.actionSplashScreenToLoginScreen()) }
+            .onEach { navController.navigate(SplashScreenDirections.actionSplashScreenToIntroScreen()) }
             .launchIn(lifecycleScope)
 
         viewModel.openMenuScreen
-            .onEach { findNavController().navigate(SplashScreenDirections.actionSplashScreenToMenuScreen()) }
+            .onEach { navController.navigate(SplashScreenDirections.actionSplashScreenToMenuScreen()) }
             .launchIn(lifecycleScope)
     }
 }

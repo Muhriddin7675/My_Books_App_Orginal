@@ -13,9 +13,14 @@
     <string name="last_name">Last name</string>
     <string name="elektron_kitoblar">Elektron kitoblar</string>
     <string name="cheksiz_bilim">Cheksiz bilim</string>
-    <string name="audio_kitoblar">Audio kitoblar</string>
+    <string name="audio_kitoblar">Katta kitoblar to\'plami</string>
     <string name="elektiron_kitoblar">Elektiron kitoblar</string>
     <string name="intro_text_first"> Sizning cho‘ntagingizda, har kuni, har yerda, xoxlagan vaqtingizda</string>
-    <string name="intro_text_second"> O‘zingiz yoqtirgan kitoblarni audio formatda eshitish imkoniyati</string>
-    <string name="intro_text_tread"> O‘qing, tinglang, tahlil qiling, fikr bildiring,\n bilimingizni oshiring </string>
+    <string name="intro_text_second">Barcha sevimli kitoblaringiz va boshqalari bizning ilovamizda </string>
+    <string name="intro_text_tread"> O‘qing tahlil qiling, fikr bildiring,\n bilimingizni oshiring </string>
+    <string name="version_1_0_0">version 1.0.0</string>
+    <string name="keyingisi">Keyingisi</string>
+    <string name="mening_kitoblarim">Saqlangan kitoblar</string>
+    <string name="yoqtirgan_kitoblarim">Yoqtirgan kitoblarim</string>
+    <string name="saqlangan_kitoblar">Saqlangan kitoblar</string>
 </resources>

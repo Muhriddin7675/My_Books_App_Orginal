@@ -69,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="7dp"
                 android:paddingVertical="1dp"
-                android:text="Eksklyuziv"
                 android:textColor="#FFF"
                 android:textSize="12sp" />
         </androidx.cardview.widget.CardView>
@@ -82,7 +81,6 @@
             android:ellipsize="end"
             android:fontFamily="@font/nunito_extrabold"
             android:maxLines="2"
-            android:text="adfasdfasdfasdfasdf"
             android:textColor="#000"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/pas"
@@ -96,7 +94,7 @@
             android:layout_marginVertical="5dp"
             android:fontFamily="@font/nunito_bold"
             android:text="Abdullar Qodiriy"
-            android:textColor="@color/Color_DarkSlateGray"
+            android:textColor="@color/text_color_author"
             android:textSize="15sp"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="@id/bookname"

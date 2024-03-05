@@ -16,11 +16,6 @@
             app:popUpTo="@id/splashScreen"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_splashScreen_to_loginScreen"
-            app:destination="@id/loginScreen"
-            app:popUpTo="@id/splashScreen"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_splashScreen_to_menuScreen"
             app:destination="@id/menuScreen"
             app:popUpTo="@id/splashScreen"
@@ -32,34 +27,9 @@
         android:label="IntroScreen"
         tools:layout="@layout/screen_intro">
         <action
-            android:id="@+id/action_introScreen_to_loginScreen"
-            app:destination="@id/loginScreen"
-            app:popUpTo="@id/introScreen"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginScreen"
-        android:name="com.example.mybooksapporginal.presentantion.screen.LoginScreen"
-        android:label="LoginScreen"
-        tools:layout="@layout/screen_login">
-        <action
-            android:id="@+id/action_loginScreen_to_registerScreen"
-            app:destination="@id/registerScreen" />
-        <action
-            android:id="@+id/action_loginScreen_to_menuScreen"
+            android:id="@+id/action_introScreen_to_menuScreen"
             app:destination="@id/menuScreen"
-            app:popUpTo="@id/loginScreen"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/registerScreen"
-        android:name="com.example.mybooksapporginal.presentantion.screen.RegisterScreen"
-        android:label="RegisterScreen"
-        tools:layout="@layout/screen_register">
-        <action
-            android:id="@+id/action_registerScreen_to_menuScreen"
-            app:destination="@id/menuScreen"
-            app:popUpTo="@id/registerScreen"
+            app:popUpTo="@id/splashScreen"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
@@ -88,11 +58,23 @@
     </fragment>
     <fragment
         android:id="@+id/bookInfo"
-        android:name="com.example.mybooksapporginal.presentantion.screen.BookInfo"
+        android:name="com.example.mybooksapporginal.presentantion.screen.ScreenInfoBook"
         android:label="BookInfo"
         tools:layout="@layout/screen_info_book">
         <argument
             android:name="bookData"
             app:argType="com.example.mybooksapporginal.data.BookData" />
+        <action
+            android:id="@+id/action_bookInfo_to_readScreen"
+            app:destination="@id/readScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/readScreen"
+        android:name="com.example.mybooksapporginal.presentantion.screen.ReadScreen"
+        android:label="ReadScreen"
+        tools:layout="@layout/screen_read">
+        <argument
+            android:name="bookPath"
+            app:argType="string" />
     </fragment>
 </navigation>

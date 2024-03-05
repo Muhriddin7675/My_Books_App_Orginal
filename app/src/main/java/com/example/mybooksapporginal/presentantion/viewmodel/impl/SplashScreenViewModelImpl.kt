@@ -17,7 +17,7 @@ class SplashScreenViewModelImpl @Inject constructor(
     private val shared: MyShared
 ) : ViewModel(), SplashScreenViewModel {
     override val openIntroScreen = MutableSharedFlow<Unit>()
-    override val openLoginScreen = MutableSharedFlow<Unit>()
+//    override val openLoginScreen = MutableSharedFlow<Unit>()
     override val openMenuScreen = MutableSharedFlow<Unit>()
 
     override fun load() {
@@ -25,8 +25,6 @@ class SplashScreenViewModelImpl @Inject constructor(
             delay(1000)
             if (shared.getHasIntroPage() == 0) {
                 openIntroScreen.emit(Unit)
-            } else if (shared.getHasIntroPage() == 1) {
-                openLoginScreen.emit(Unit)
             } else {
                 openMenuScreen.emit(Unit)
             }

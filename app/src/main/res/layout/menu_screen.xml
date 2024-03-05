@@ -23,6 +23,9 @@
         style="@style/BottomNavigationBar"
         app:itemIconSize="22dp"
         app:labelVisibilityMode="labeled"
+        app:itemTextColor="@color/bg_menu_item_color"
+        app:itemBackground="@drawable/bg_ripplw_menu_item"
+        app:itemIconTint="@color/bg_menu_item_color"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

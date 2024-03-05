@@ -24,7 +24,6 @@ class MenuScreen : Fragment(R.layout.menu_screen) {
             when (it.itemId) {
                 R.id.bottomLibrary -> binding.viewPager.currentItem = 0
                 R.id.bottomMyBooks -> binding.viewPager.currentItem = 1
-                else -> binding.viewPager.currentItem = 2
             }
             return@setOnItemSelectedListener true
         }

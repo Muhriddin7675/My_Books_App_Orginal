@@ -21,17 +21,18 @@ class ByCategoryAllBooksScreen : Fragment(R.layout.screen_category_by_books_all)
     private val viewModel: ByCategoryAllBooksViewModel by viewModels<ByCategoryAllBooksViewModelImpl>()
     private val adapter by lazy { ByCategoryAllBookAdapter() }
     private val navArgs: ByCategoryAllBooksScreenArgs by navArgs()
+    private val navController by lazy(LazyThreadSafetyMode.NONE) { findNavController() }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.rvAllBooks.adapter = adapter
         binding.rvAllBooks.layoutManager = LinearLayoutManager(requireContext())
         adapter.submitList(navArgs.categoryData.bookList)
         adapter.setOnClickBookItem {
-            findNavController().navigate(
+            navController.navigate(
                 ByCategoryAllBooksScreenDirections.actionByCategoryAllBooksScreenToBookInfo(it)
             )
         }
         binding.back.setOnClickListener {
-            findNavController().popBackStack()
+            navController.popBackStack()
         }
     }
 }

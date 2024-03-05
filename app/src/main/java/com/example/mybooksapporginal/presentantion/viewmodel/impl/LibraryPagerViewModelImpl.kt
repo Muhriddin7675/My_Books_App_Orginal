@@ -8,6 +8,7 @@ import com.example.mybooksapporginal.presentantion.viewmodel.LibraryPagerViewMod
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
@@ -18,18 +19,17 @@ class LibraryPagerViewModelImpl @Inject constructor(
 ) : ViewModel(), LibraryPagerViewModel {
     override val errorMessage = MutableSharedFlow<String>()
     override val loadData = MutableSharedFlow<List<CategoryData>>()
-    override val progress = MutableSharedFlow<Boolean>()
+    override val progress = MutableStateFlow(false)
 
     override fun loadLibraryData() {
-        repositoryImpl.getAllLibraryBooks()
+        progress.value = true
+        repositoryImpl.requestAllBook()
             .onEach { result ->
-                progress.emit(true)
+                progress.value = false
                 result.onSuccess {
-                    progress.emit(false)
                     loadData.emit(it)
                 }
                 result.onFailure {
-                    progress.emit(false)
                     errorMessage.emit(it.message.toString())
                 }
             }

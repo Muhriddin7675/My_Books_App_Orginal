@@ -16,21 +16,21 @@ private val binding by  viewBinding(PagerIntroBinding::bind)
         when(position){
             0 ->{
                 binding.apply {
-                    introImage.setImageResource(R.drawable.ic_menu_book)
+                    introImage.setImageResource(R.drawable.image_intro_first)
                     intrTitle.setText( R.string.elektron_kitoblar)
                     introText.setText(R.string.intro_text_first)
                 }
             }
             2 ->{
                 binding.apply {
-                    introImage.setImageResource(R.drawable.ic_menu_book)
+                    introImage.setImageResource(R.drawable.image_intro_second)
                     intrTitle.setText( R.string.audio_kitoblar)
                     introText.setText(R.string.intro_text_second)
                 }
             }
             else ->{
                 binding.apply {
-                    introImage.setImageResource(R.drawable.ic_menu_book)
+                    introImage.setImageResource(R.drawable.image_intor_tread)
                     intrTitle.setText( R.string.cheksiz_bilim)
                     introText.setText(R.string.intro_text_tread)
                 }

@@ -24,6 +24,12 @@
 
     <style name="BottomNavigationBar" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:elevation">0dp</item>
+        <item name="tabIconTint">@color/Color_Button</item>
+        <item name="icon">@color/Color_Button</item>
+        <item name="iconTint">@color/Color_Button</item>
+        <item name="colorPrimarySurface">@color/Color_Button</item>
+        <item name="colorButtonNormal">@color/Color_Button</item>
+        <item name="checkedIconTint">@color/Color_Button</item>
     </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">

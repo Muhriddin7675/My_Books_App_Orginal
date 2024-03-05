@@ -7,12 +7,15 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
+import com.example.mybooksapporginal.R
 import com.example.mybooksapporginal.data.BookData
 import com.example.mybooksapporginal.databinding.ItemLibraryBooksBinding
 
 
 class LibraryPagerInnerAdapter : ListAdapter<BookData, LibraryPagerInnerAdapter.LibraryInnerViewHolder>(LibraryDiffUtil) {
+     var time = System.currentTimeMillis()
         lateinit var clickBookItem:(BookData)->Unit
+
     object LibraryDiffUtil : DiffUtil.ItemCallback<BookData>() {
         override fun areItemsTheSame(oldItem: BookData, newItem: BookData): Boolean =
             oldItem.docId == newItem.docId
@@ -25,9 +28,14 @@ class LibraryPagerInnerAdapter : ListAdapter<BookData, LibraryPagerInnerAdapter.
     inner class LibraryInnerViewHolder(private val binding: ItemLibraryBooksBinding) :
         ViewHolder(binding.root) {
             init {
-                binding.item.setOnClickListener{
-                    clickBookItem.invoke(getItem(adapterPosition))
-                }
+
+                    binding.item.setOnClickListener{
+                        if(System.currentTimeMillis() - time > 500){
+                        clickBookItem.invoke(getItem(adapterPosition))
+                        }
+                        time = System.currentTimeMillis()
+                    }
+
             }
         fun bind(data: BookData) {
             binding.bookname.text = data.bookName
@@ -36,6 +44,8 @@ class LibraryPagerInnerAdapter : ListAdapter<BookData, LibraryPagerInnerAdapter.
                 Glide.with(binding.root)
                     .load(data.bookImage)
                     .into(binding.imageItem)
+            }else{
+                binding.imageItem.setImageResource(R.drawable.book_image)
             }
         }
     }
