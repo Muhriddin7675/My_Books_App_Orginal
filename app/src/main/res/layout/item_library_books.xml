@@ -2,17 +2,18 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="180dp"
-    android:layout_height="300dp"
+    android:layout_width="170dp"
+    android:layout_height="305dp"
     android:layout_marginHorizontal="5dp"
     android:layout_marginVertical="10dp"
     app:cardCornerRadius="10dp"
+    android:backgroundTint="@color/Color_Azure"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true"
         android:foreground="?android:selectableItemBackground">
@@ -21,7 +22,7 @@
             android:id="@+id/box_img"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:backgroundTint="@color/Color_Azure"
+            android:backgroundTint="@color/white"
             android:elevation="0dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="0dp"
@@ -35,7 +36,7 @@
                 android:id="@+id/image_item"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginVertical="8dp"
+                android:padding="8dp"
                 android:src="@drawable/book_image" />
         </androidx.cardview.widget.CardView>
 
@@ -45,7 +46,7 @@
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/box_img"
-            app:layout_constraintVertical_weight="1" />
+            app:layout_constraintVertical_weight="1.2" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/box_txt_eksklyuziv"
@@ -79,6 +80,7 @@
             android:layout_height="48dp"
             android:layout_margin="10dp"
             android:ellipsize="end"
+            android:gravity="center_vertical"
             android:fontFamily="@font/nunito_extrabold"
             android:maxLines="2"
             android:textColor="#000"
@@ -94,8 +96,12 @@
             android:layout_marginVertical="5dp"
             android:fontFamily="@font/nunito_bold"
             android:text="Abdullar Qodiriy"
+            android:layout_marginBottom="8dp"
             android:textColor="@color/text_color_author"
             android:textSize="15sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintBottom_toBottomOf="@+id/pas"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintLeft_toLeftOf="@id/bookname"
             app:layout_constraintRight_toRightOf="parent"

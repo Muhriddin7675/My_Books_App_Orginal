@@ -181,14 +181,12 @@ class AppRepositoryImpl @Inject constructor(
         awaitClose()
     }.flowOn(Dispatchers.IO)
 
-    override fun getDownloadedBook(data: BookData): Flow<File> = callbackFlow {
+    override fun getDownloadedBook(data: BookData): Flow<File> = callbackFlow<File> {
         val bookLocalPath = booksDao.getBooksByDocID(data.docId).bookPath
         val file = File(bookLocalPath)
         trySend(file)
-        awaitClose {
-            channel.close()
-        }
-    }
+        awaitClose()
+    }.flowOn(Dispatchers.IO)
 
 
     override fun pauseBookUploading() {

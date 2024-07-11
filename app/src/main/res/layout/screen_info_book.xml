@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/Color_AliceBlue"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/Color_AliceBlue">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -24,16 +24,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/book_image"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="200dp"
                 android:layout_height="250dp"
                 android:layout_marginTop="24dp"
-                android:background="@color/Color_Azure"
-                android:src="@drawable/book_image"
+                app:cardCornerRadius="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/back" />
+                app:layout_constraintTop_toBottomOf="@id/back">
+
+                <ImageView
+                    android:id="@+id/book_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:elevation="50dp"
+                    android:padding="8dp"
+                    android:src="@drawable/book_image" />
+
+            </androidx.cardview.widget.CardView>
 
 
             <TextView
@@ -48,7 +58,7 @@
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/book_image" />
+                app:layout_constraintTop_toBottomOf="@id/card" />
 
             <TextView
                 android:id="@+id/book_author"
@@ -120,6 +130,7 @@
                 android:text="Kitob Haqida"
                 android:textColor="@color/gray_500"
                 android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/book" />
@@ -133,10 +144,11 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="76dp"
+        android:background="@color/Color_AliceBlue"
         android:elevation="2dp"
         android:visibility="gone"
-        tools:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -160,24 +172,24 @@
                 android:layout_marginStart="24dp"
                 android:fontFamily="@font/nunito_extrabold"
                 android:text="714/778 MB"
-                android:textColor="@color/text_color_author"
+                android:textColor="@color/Color_Button"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@id/ic_download"
                 app:layout_constraintStart_toEndOf="@id/ic_download"
                 app:layout_constraintTop_toTopOf="@id/ic_download" />
 
-            <ImageView
-                android:id="@+id/play_button"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_marginEnd="16dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:padding="9dp"
-                android:src="@drawable/pause_svgrepo_com"
-                android:visibility="visible"
-                app:layout_constraintBottom_toBottomOf="@id/ic_download"
-                app:layout_constraintEnd_toStartOf="@id/cancel_button"
-                app:layout_constraintTop_toTopOf="@id/ic_download" />
+            <!--            <ImageView-->
+            <!--                android:id="@+id/play_button"-->
+            <!--                android:layout_width="42dp"-->
+            <!--                android:layout_height="42dp"-->
+            <!--                android:layout_marginEnd="16dp"-->
+            <!--                android:background="?selectableItemBackgroundBorderless"-->
+            <!--                android:padding="9dp"-->
+            <!--                android:src="@drawable/pause_svgrepo_com"-->
+            <!--                android:visibility="visible"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@id/ic_download"-->
+            <!--                app:layout_constraintEnd_toStartOf="@id/cancel_button"-->
+            <!--                app:layout_constraintTop_toTopOf="@id/ic_download" />-->
 
             <ImageView
                 android:id="@+id/pause_button"
@@ -211,10 +223,10 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="8dp"
                 android:clickable="false"
-                android:thumbTint="@color/text_color_author"
-                android:progressTint="@color/text_color_author"
-                android:secondaryProgressTint="@color/text_color_author"
-                android:progressBackgroundTint="#000"
+                android:progressBackgroundTint="#3C2222"
+                android:progressTint="@color/Color_DarkSlateGray"
+                android:secondaryProgressTint="@color/Color_DarkSlateGray"
+                android:thumbTint="@color/Color_DarkSlateGray"
                 app:chainUseRtl="false"
                 app:layout_constraintBottom_toBottomOf="parent" />
 

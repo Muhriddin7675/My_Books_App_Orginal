@@ -13,7 +13,7 @@
         <action
             android:id="@+id/action_splashScreen_to_introScreen"
             app:destination="@id/introScreen"
-            app:popUpTo="@id/splashScreen"
+            app:popUpTo="@id/introScreen"
             app:popUpToInclusive="true" />
         <action
             android:id="@+id/action_splashScreen_to_menuScreen"
@@ -75,6 +75,9 @@
         tools:layout="@layout/screen_read">
         <argument
             android:name="bookPath"
+            app:argType="string" />
+        <argument
+            android:name="docIc"
             app:argType="string" />
     </fragment>
 </navigation>

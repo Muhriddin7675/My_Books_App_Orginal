@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.mybooksapporginal.data.BookData
 import com.example.mybooksapporginal.domain.AppRepository
 import com.example.mybooksapporginal.presentantion.viewmodel.BookInfoViewModule
+import com.example.mybooksapporginal.util.myLog
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.BufferOverflow
 import kotlinx.coroutines.flow.Flow
@@ -37,7 +38,10 @@ class BookInfoViewModuleImpl @Inject constructor(
 
     override fun getDownloadedBook(data: BookData) {
         repository.getDownloadedBook(data)
-            .onEach { fileLiveData.emit(it) }.launchIn(viewModelScope)
+            .onEach {
+                "Path : "+it.path.toString().myLog()
+                fileLiveData.emit(it)
+            }.launchIn(viewModelScope)
     }
 
 }

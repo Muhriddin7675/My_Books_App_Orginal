@@ -13,5 +13,9 @@ class MyShared @Inject constructor(
     }
     fun getHasIntroPage() = pref.getInt("INTRO", 0)
 
+    fun setBookPage(key:String,value:Int){
+        pref.edit().putInt(key,value).apply()
+    }
+    fun getBookPage(key:String) = pref.getInt(key,0)
 
 }

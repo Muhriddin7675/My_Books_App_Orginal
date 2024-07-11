@@ -27,11 +27,18 @@ class SplashScreen : Fragment(R.layout.screen_splash) {
         viewModel.load()
 
         viewModel.openIntroScreen
-            .onEach { navController.navigate(SplashScreenDirections.actionSplashScreenToIntroScreen()) }
+            .onEach {
+//                navController.navigate(SplashScreenDirections.actionSplashScreenToIntroScreen())
+                navController.navigate(SplashScreenDirections.actionSplashScreenToIntroScreen())
+
+            }
             .launchIn(lifecycleScope)
 
         viewModel.openMenuScreen
-            .onEach { navController.navigate(SplashScreenDirections.actionSplashScreenToMenuScreen()) }
+            .onEach {
+//                navController.navigate(SplashScreenDirections.actionSplashScreenToMenuScreen())
+                navController.navigate(SplashScreenDirections.actionSplashScreenToMenuScreen())
+            }
             .launchIn(lifecycleScope)
     }
 }

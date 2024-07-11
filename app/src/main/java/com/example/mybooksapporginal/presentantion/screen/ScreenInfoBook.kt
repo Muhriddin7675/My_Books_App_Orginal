@@ -2,9 +2,13 @@ package com.example.mybooksapporginal.presentantion.screen
 
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -20,6 +24,7 @@ import com.example.mybooksapporginal.domain.AppRepository
 import com.example.mybooksapporginal.presentantion.viewmodel.BookInfoViewModule
 import com.example.mybooksapporginal.presentantion.viewmodel.impl.BookInfoViewModuleImpl
 import com.example.mybooksapporginal.util.myLog
+import com.github.barteksc.pdfviewer.BuildConfig
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -48,13 +53,15 @@ class ScreenInfoBook : Fragment(R.layout.screen_info_book) {
             bookName.text = bookData.bookName
             bookAuthor.text = bookData.bookAuthor
             bookDescription.text = bookData.bookDescription
-            seekbar.setOnTouchListener { v, event -> true  }
-            if(bookData.bookImage != "null"){
+            seekbar.setOnTouchListener { v, event -> true }
+            if (bookData.bookImage != "null") {
                 Glide.with(binding.root)
                     .load(bookData.bookImage)
                     .into(binding.bookImage)
-            }else{
-                binding.bookImage.setImageResource(R.drawable.book_image)
+            } else {
+                Glide.with(binding.root)
+                    .load(R.drawable.book_image)
+                    .into(binding.bookImage)
             }
         }
 
@@ -91,86 +98,116 @@ class ScreenInfoBook : Fragment(R.layout.screen_info_book) {
 
 
         binding.btnDown.setOnClickListener {
+            binding.btnDown.isClickable = false
+            binding.btnDown.isFocusable = false
             if (fileTemp != null) {
                 navController.navigate(
                     ScreenInfoBookDirections.actionBookInfoToReadScreen(
-                      fileTemp!!.absolutePath
-
+                        fileTemp!!.absolutePath,bookDocID
                     )
                 )
-            } else if (isHasBook) {
-                "Bu book mavjud".myLog()
-                viewModel.getDownloadedBook(data)
-            } else {
-                binding.bottomBar.visibility = View.VISIBLE
-                repository.downloadBookPdf(data)
-                    .onEach {
-                        when (it) {
-                            UploadBookData.CANCEL -> {
-                                Toast.makeText(requireContext(), "CANCEL", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+//                openPdfBook(fileTemp!!)
+                binding.btnDown.isClickable = true
+                binding.btnDown.isFocusable = true
 
-                            UploadBookData.PAUSE -> {
-                                Toast.makeText(requireContext(), "PAUSE", Toast.LENGTH_SHORT).show()
-                            }
+            } else
+                if (isHasBook) {
+                    "Bu book mavjud".myLog()
+                    viewModel.getDownloadedBook(data)
+                } else {
+                    binding.bottomBar.visibility = View.VISIBLE
+                    repository.downloadBookPdf(data)
+                        .onEach {
+                            when (it) {
+                                UploadBookData.CANCEL -> {
+                                    binding.btnDown.isClickable = true
+                                    binding.btnDown.isFocusable = true
+                                    Toast.makeText(requireContext(), "CANCEL", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
 
-                            UploadBookData.RESUME -> {
-                                Toast.makeText(requireContext(), "RESUME", Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                                UploadBookData.PAUSE -> {
+                                    Toast.makeText(requireContext(), "PAUSE", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
 
-                            is UploadBookData.Error -> {
-                                Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT)
-                                    .show()
-                            }
+                                UploadBookData.RESUME -> {
+                                    Toast.makeText(requireContext(), "RESUME", Toast.LENGTH_SHORT)
+                                        .show()
+                                }
 
-                            is UploadBookData.Progress -> {
-                                val uploadBytes = it.uploadBytes / 1024
-                                val totalBytes = it.totalBytes / 1024
+                                is UploadBookData.Error -> {
+                                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT)
+                                        .show()
+                                }
 
-                                binding.progress.text =
-                                    "${uploadBytes}/${totalBytes} MB   ${it.uploadBytes * 100 / it.totalBytes}%"
-                                binding.seekbar.progress =
-                                    (it.uploadBytes * 100 / it.totalBytes).toInt()
-                                "${it.uploadBytes * 100 / it.totalBytes}".myLog()
-                            }
+                                is UploadBookData.Progress -> {
+                                    val uploadBytes = it.uploadBytes / 1024
+                                    val totalBytes = it.totalBytes / 1024
 
-                            is UploadBookData.SUCCESS -> {
-                                Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT)
-                                    .show()
-                                binding.bottomBar.visibility = View.GONE
-                                binding.btnDown.text = "O'qish"
-                                fileTemp = it.file
+                                    binding.progress.text =
+                                        "${totalBytes}/${uploadBytes} KB   ${it.uploadBytes * 100 / it.totalBytes}%"
+                                    binding.seekbar.progress =
+                                        (it.uploadBytes * 100 / it.totalBytes).toInt()
+                                    "${it.uploadBytes * 100 / it.totalBytes}".myLog()
+                                }
 
+                                is UploadBookData.SUCCESS -> {
+                                    Toast.makeText(requireContext(), "Success", Toast.LENGTH_SHORT)
+                                        .show()
+                                    binding.bottomBar.visibility = View.GONE
+                                    binding.btnDown.text = "O'qish"
+                                    fileTemp = it.file
+                                    binding.btnDown.isClickable = true
+                                    binding.btnDown.isFocusable = true
+                                }
                             }
                         }
-                    }
-                    .launchIn(lifecycleScope)
-            }
+                        .launchIn(lifecycleScope)
+                }
         }
         binding.cancelButton.setOnClickListener {
             binding.bottomBar.visibility = View.GONE
             repository.cancelBookUploading()
         }
-        binding.playButton.setOnClickListener {
-            binding.playButton.visibility = View.GONE
-            binding.pauseButton.visibility = View.VISIBLE
-            repository.pauseBookUploading()
-        }
-        binding.pauseButton.setOnClickListener {
-            binding.playButton.visibility = View.VISIBLE
-            binding.pauseButton.visibility = View.GONE
-            repository.resumeBookUploading()
-        }
+//        binding.playButton.setOnClickListener {
+//            binding.playButton.visibility = View.GONE
+//            binding.pauseButton.visibility = View.VISIBLE
+//            repository.pauseBookUploading()
+//        }
+//        binding.pauseButton.setOnClickListener {
+//            binding.playButton.visibility = View.VISIBLE
+//            binding.pauseButton.visibility = View.GONE
+//            repository.resumeBookUploading()
+//        }
+
         viewModel.fileLiveData.onEach {
-            navController.navigate(
-                ScreenInfoBookDirections.actionBookInfoToReadScreen(
-                 it.path)
-            )
-        }.launchIn(lifecycleScope)
+            "labelName -> ${findNavController().currentDestination?.label}".myLog()
+            if (findNavController().currentDestination?.label == "BookInfo") {
+                val direction = ScreenInfoBookDirections.actionBookInfoToReadScreen(it.path,bookDocID)
+                findNavController().navigate(direction)
+//                openPdfBook(it)
+            }
+        }.launchIn(lifecycleScope);
 
 
+    }
+
+    private fun openPdfBook(file: File) {
+        val fileUri = FileProvider.getUriForFile(
+            requireActivity(),
+            "com.example.mybooksapporginal.provider",
+            file
+        )
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(fileUri, "application/pdf")
+        intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
+
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            // Handle the case where no PDF viewer is installed
+        }
     }
 
 }
