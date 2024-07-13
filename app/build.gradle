@@ -93,7 +93,7 @@ dependencies {
     implementation("com.tbuonomo:dotsindicator:5.0")
 
 
-    // room
+    // Room
     implementation("androidx.room:room-runtime:2.6.1")
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
